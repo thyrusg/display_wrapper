@@ -8,7 +8,6 @@ class Server
   end
 
   def start
-    puts "Server started on port 1337" if @server
     loop do
       client = @server.accept
       request = parse_request(client.gets)
