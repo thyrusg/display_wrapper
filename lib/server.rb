@@ -1,4 +1,6 @@
 require 'socket'
+require_relative "./wrapper"
+require 'cgi'
 
 class Server
   attr_reader :server
