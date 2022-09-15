@@ -10,10 +10,17 @@ class Server
   end
 
   def start
+    puts "Server started" if @server
     loop do
       client = @server.accept
       request = parse_request(client.gets)
-      puts request
+      #TODO: Add validation of request params
+      params = parse_params(request[:path])
+      if params
+        DisplayWrapper.execute(text: params["text"].first, title: params["title"].first,
+                               subtitle: params["subtitle"].first, sound: params["sound"].first)
+      end
+      client.write "Request Processed"
       client.close
     end
   end
