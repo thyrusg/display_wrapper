@@ -36,4 +36,10 @@ class Server
     method, path, protocol = request.split(" ")
     {method: method, path: path, protocol: protocol}
   end
+
+  def parse_params(url_params)
+    # This strips the leading /? from the path
+    url_params = url_params[2..-1]
+    CGI.parse(url_params)
+  end
 end
