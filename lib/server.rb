@@ -43,3 +43,7 @@ class Server
     CGI.parse(url_params)
   end
 end
+
+if __FILE__ == $0
+  Server.new.start
+end
